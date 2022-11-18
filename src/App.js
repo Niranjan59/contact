@@ -40,30 +40,27 @@ export default function App() {
   };
 
   return (
-   
     <div>
-       <Router>
-       <Navbar title="TextUtils" mode={mode} toogle={toogle} />
-      {/* <Contact /> */}
-      <Alert alert={alert} />
-
-      <Switch>
-        <Route exact path="/about">
-        <About about="About Us"/>
-        </Route>
-
-        <Route exact path="/">
-          <TextForm
-            showAlert={showAlert}
-            heading="Enter your text here:"
-            mode={mode}
-          />
-        </Route>
-      </Switch>
       
-      </Router>
 
-      
+      <Router>
+        <Navbar title="TextUtils" mode={mode} toogle={toogle} />
+        <Alert alert={alert} />
+
+        <Switch>
+          <Route exact path="/about">
+            <About about="About Us" />
+          </Route>
+
+          <Route exact path="/">
+            <TextForm
+              showAlert={showAlert}
+              heading="Enter your text here:"
+              mode={mode}
+            />
+          </Route>
+        </Switch>
+      </Router> 
     </div>
   );
 }
