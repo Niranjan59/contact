@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import Alert from "./component/Alert";
 import About from "./component/About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 
 export default function App() {
   const [mode, setMode] = useState("light"); //Wheather dark mode is enabled or not
@@ -41,26 +44,24 @@ export default function App() {
 
   return (
     <div>
-      
-
       <Router>
         <Navbar title="TextUtils" mode={mode} toogle={toogle} />
         <Alert alert={alert} />
 
         <Switch>
           <Route exact path="/about">
-            <About about="About Us" />
+            <About about="About Us" mode={mode} />
           </Route>
 
           <Route exact path="/">
             <TextForm
               showAlert={showAlert}
-              heading="Enter your text here:"
+              heading="Try TextUtils- Word Counter, Character Counter, Remove extra spaces"
               mode={mode}
             />
           </Route>
         </Switch>
-      </Router> 
+      </Router>
     </div>
   );
 }

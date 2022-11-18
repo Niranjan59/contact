@@ -20,6 +20,7 @@ function Form(props) {
     var text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     props.showAlert(" Text Copied!", "success");
   };
   const handleExtraSpaces = () => {
@@ -42,8 +43,8 @@ function Form(props) {
           className="container my-2"
           style={{ color: props.mode === "dark" ? "white" : "black" }}
         >
-          <div className="mb-2">
-            <h2>{props.heading}</h2>
+          <div className=" my-4">
+            <h2 className="mb-4">{props.heading}</h2>
             <textarea
               className="form-control"
               value={text}
@@ -52,24 +53,41 @@ function Form(props) {
               rows="5"
               style={{
                 backgroundColor: props.mode === "light" ? "#bfcad6" : "light",
-                color: props.mode === "dark" ? "white" : "black",
+                color: props.mode === "dark" ? "black" : "black",
               }}
             ></textarea>
           </div>
           <div className="mb2">
-            <button className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>
-              Convert to Uppercase 
-            </button> 
-            <button className="btn btn-primary mx-2 my-1" onClick={handleLwClick}>
-              Convert to LowerCase 
-            </button> 
-            <button className="btn btn-primary mx-2 my-1" onClick={handleClearClick}>
-              Clear text 
-            </button> 
-            <button className="btn btn-primary mx-2 my-1" onClick={handleCopy}>
+            <button
+              disabled={text.length === 0}
+              className="btn btn-primary mx-2 my-1"
+              onClick={handleUpClick}
+            >
+              Convert to Uppercase
+            </button>
+            <button
+              disabled={text.length === 0}
+              className="btn btn-primary mx-2 my-1"
+              onClick={handleLwClick}
+            >
+              Convert to LowerCase
+            </button>
+            <button
+              disabled={text.length === 0}
+              className="btn btn-primary mx-2 my-1"
+              onClick={handleClearClick}
+            >
+              Clear text
+            </button>
+            <button
+              disabled={text.length === 0}
+              className="btn btn-primary mx-2 my-1"
+              onClick={handleCopy}
+            >
               Copy text
             </button>
             <button
+              disabled={text.length === 0}
               className="btn btn-primary mx-2"
               onClick={handleExtraSpaces}
             >
@@ -89,13 +107,15 @@ function Form(props) {
               }{" "}
               words and {text.length} characters.
             </p>
-            <p>{0.008 * text.split(" ").length} Minutes read</p>
-            <h2>Preview</h2>
             <p>
-              {text.length > 0
-                ? text
-                : "Enter something in the textbox above to preview it here"}
+              {0.008 *
+                text.split(" ").filter((element) => {
+                  return element.length !== 0;
+                }).length}{" "}
+              Minutes read
             </p>
+            <h2>Preview</h2>
+            <p>{text.length > 0 ? text : "Noting to preview!"}</p>
           </div>
         </div>
       </div>
