@@ -38,6 +38,80 @@ export default function Navbar(props) {
               </Link>
             </li>
           </ul>
+          <div className="d-flex">
+            <div
+              className="bg-primary rounded mx-2"
+              onClick={() => {
+                props.toogle("primary");
+              }}
+              style={{
+                height: "20px",
+                width: "20px",
+                cursor: "pointer",
+                border: "1px solid black",
+              }}
+            ></div>
+            <div
+              className="bg-danger rounded mx-2"
+              onClick={() => {
+                props.toogle("danger");
+              }}
+              style={{
+                height: "20px",
+                width: "20px",
+                cursor: "pointer",
+                border: "1px solid black",
+              }}
+            ></div>
+            <div
+              className="bg-success rounded mx-2"
+              onClick={() => {
+                props.toogle("success");
+              }}
+              style={{
+                height: "20px",
+                width: "20px",
+                cursor: "pointer",
+                border: "1px solid black",
+              }}
+            ></div>
+            <div
+              className="bg-warning rounded mx-2"
+              onClick={() => {
+                props.toogle("warning");
+              }}
+              style={{
+                height: "20px",
+                width: "20px",
+                cursor: "pointer",
+                border: "1px solid black",
+              }}
+            ></div>
+            <div
+              className="bg-light rounded mx-2"
+              onClick={() => {
+                props.toogle("light");
+              }}
+              style={{
+                height: "20px",
+                width: "20px",
+                cursor: "pointer",
+                border: "1px solid black",
+              }}
+            ></div>{" "}
+            <div
+              className="bg-dark rounded mx-2"
+              onClick={() => {
+                props.toogle("dark");
+              }}
+              style={{
+                height: "20px",
+                width: "20px",
+                cursor: "pointer",
+                border: "1px solid black",
+              }}
+            ></div>
+          </div>
           <div
             className={`form-check form-switch text-${
               props.mode === "light" ? "dark" : "light"
@@ -46,14 +120,16 @@ export default function Navbar(props) {
             <input
               className="form-check-input"
               type="checkbox"
-              onClick={props.toogle}
+              onClick={() => {
+                props.toogle(null);
+              }}
               id="flexSwitchCheckDefault"
             />
             <label
               className="form-check-label"
               htmlFor="flexSwitchCheckDefault"
             >
-              Enable darkMode
+              Toogle Mode
             </label>
           </div>
         </div>

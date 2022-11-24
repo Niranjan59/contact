@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-
 export default function App() {
   const [mode, setMode] = useState("light"); //Wheather dark mode is enabled or not
   const [alert, setAlert] = useState(null); //Wheather dark mode is enabled or not
@@ -22,7 +21,18 @@ export default function App() {
     }, 2000);
   };
 
-  const toogle = () => {
+  const removeBodyClasses = () => {
+    document.body.classList.remove("bg-light");
+    document.body.classList.remove("bg-dark");
+    document.body.classList.remove("bg-primary");
+    document.body.classList.remove("bg-warning");
+    document.body.classList.remove("bg-danger");
+    document.body.classList.remove("bg-success");
+  };
+
+  const toogle = (cls) => {
+    removeBodyClasses();
+    document.body.classList.add("bg-" + cls);
     if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "#042743";
